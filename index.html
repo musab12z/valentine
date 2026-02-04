@@ -73,11 +73,11 @@ button:hover{transform:scale(1.08)}
 
 /* Envelope */
 .envelope{
-  width:230px;
-  height:150px;
+  width:240px;
+  height:160px;
   background:white;
   position:relative;
-  border-radius:12px;
+  border-radius:14px;
   cursor:pointer;
   box-shadow:0 12px 25px rgba(0,0,0,.25);
   overflow:hidden;
@@ -97,8 +97,10 @@ button:hover{transform:scale(1.08)}
   background:white;
   top:100%;
   left:4%;
-  border-radius:12px;
+  border-radius:14px;
   transition:.9s;
+  padding:18px;
+  overflow-y:auto;
 }
 .envelope.open .paper{
   top:4%;
@@ -134,7 +136,7 @@ button:hover{transform:scale(1.08)}
 }
 .option:hover{background:#ffe3ec}
 
-/* No button fix */
+/* No button */
 #no{
   position:relative;
   margin-left:15px;
@@ -157,25 +159,26 @@ button:hover{transform:scale(1.08)}
 </section>
 
 <section id="p2">
-  <h1>Open Me 💝</h1>
+  <h1>Click the Envelope 💝</h1>
   <div class="envelope" onclick="openEnv(this)">
-    <div class="paper"></div>
+    <div class="paper">
+      <p style="font-size:15px;line-height:1.7;">
+        As on Valentine’s Day, I want to say to you that I love you so much—more than words can ever fully explain.
+        You are my safe place, my happiness, and the most beautiful part of my everyday life.
+        Loving you feels natural and easy, like my heart knew you before I did.
+        Your smile lifts me on my hardest days, your presence brings me peace,
+        and your love makes me a better person.
+        I’m grateful for every moment we share, every laugh, every late-night talk,
+        and every quiet second just being us.
+        Today and always, I choose you, I appreciate you,
+        and I promise to love you with my whole heart, now and forever 💖
+      </p>
+    </div>
   </div>
 </section>
 
 <section id="p3">
   <div class="box">
-    <p>
-      Loving you feels like home.  
-      With you, even silence feels beautiful.  
-      I don’t promise perfection — I promise effort, honesty, and a lifetime of choosing you 💖
-    </p>
-
-    <div class="photos">
-      <img src="img1.jpg">
-      <img src="img2.jpg">
-    </div>
-
     <button onclick="go(4)">Next 💕</button>
   </div>
 </section>
@@ -191,7 +194,7 @@ button:hover{transform:scale(1.08)}
 </section>
 
 <section id="p6">
-  <h1>Will you be my Valentine? 💍</h1>
+  <h1>Zeba, will you be my Valentine? 💍</h1>
   <div class="photos">
     <img src="img3.jpg">
     <img src="img4.jpg">
@@ -202,20 +205,15 @@ button:hover{transform:scale(1.08)}
   </div>
 </section>
 
-<!-- 🌟 FINAL PAGE -->
 <section id="p7">
-  <div class="box" style="position:relative;overflow:hidden;">
+  <div class="box" style="position:relative;">
     <div style="font-size:120px;position:absolute;left:20px;top:20px;opacity:.15;font-family:'Pacifico';">M</div>
     <div style="font-size:120px;position:absolute;right:20px;bottom:20px;opacity:.15;font-family:'Pacifico';">Z</div>
 
     <h1>Forever Begins Here 💖</h1>
-    <p style="font-size:18px;line-height:1.7">
-      Two hearts, one story.  
-      One promise, countless memories.  
-      No matter where life takes us, my hand will always search for yours 🌹  
-      This isn’t just a Valentine — this is *us*.  
-      <br><br>
-      I love you endlessly, today and always 💞
+    <p>
+      Two hearts. One soul. One lifetime.  
+      I love you endlessly, my jaan 🌹
     </p>
   </div>
 </section>
@@ -228,7 +226,7 @@ function go(n){
 
 function openEnv(e){
   e.classList.add('open');
-  setTimeout(()=>go(3),900);
+  setTimeout(()=>go(3),1400);
 }
 
 const quiz=[
@@ -262,11 +260,11 @@ no.onmouseover=()=>{
 setInterval(()=>{
  let h=document.createElement('div');
  h.className='heart';
- h.innerText=Math.random()>.75?'🧸':(Math.random()>.5?'🌹':'💖');
+ h.innerText=Math.random()>.8?'🧸':(Math.random()>.5?'🌹':'💖');
  h.style.left=Math.random()*100+'vw';
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),7000);
-},300);
+},320);
 </script>
 
 </body>
