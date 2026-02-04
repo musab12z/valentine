@@ -4,245 +4,258 @@
 <meta charset="UTF-8">
 <title>For Zeba 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(120deg, #ffb6c1, #ffd1dc);
-  overflow-x: hidden;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Quicksand',sans-serif;
+  background:linear-gradient(135deg,#ffb6c1,#ffd1dc);
+  overflow:hidden;
 }
 
-section {
-  display: none;
-  min-height: 100vh;
-  text-align: center;
-  padding: 40px;
+section{
+  display:none;
+  min-height:100vh;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:30px;
+  animation:fadeIn 1.2s ease;
 }
 
-.active {
-  display: block;
+.active{display:flex}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(.95)}
+  to{opacity:1;transform:scale(1)}
 }
 
-h1 {
-  font-family: 'Pacifico', cursive;
-  color: #ff2e63;
+h1{
+  font-family:'Pacifico',cursive;
+  color:#ff2e63;
+  margin-bottom:15px;
 }
 
-button {
-  padding: 14px 28px;
-  border: none;
-  border-radius: 30px;
-  background: #ff4d6d;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
+.box{
+  background:rgba(255,255,255,0.35);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:25px;
+  max-width:700px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
-button:hover {
-  transform: scale(1.05);
+button{
+  margin-top:25px;
+  padding:14px 34px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  transition:.3s;
 }
+button:hover{transform:scale(1.1)}
 
-/* Hearts */
-.heart {
-  position: fixed;
-  bottom: -10px;
-  font-size: 24px;
-  animation: floatUp 6s linear infinite;
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:24px;
+  animation:float 6s linear infinite;
 }
-
-@keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-100vh); opacity: 0; }
+@keyframes float{
+  to{transform:translateY(-110vh);opacity:0}
 }
 
 /* Envelope */
-.envelope {
-  width: 200px;
-  height: 130px;
-  background: white;
-  margin: 40px auto;
-  position: relative;
-  cursor: pointer;
+.envelope{
+  width:220px;
+  height:140px;
+  background:white;
+  position:relative;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,.2);
+  overflow:hidden;
 }
-
-.envelope::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(0 0, 50% 50%, 100% 0);
-  background: #ffd1dc;
+.envelope:before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ffd1dc;
+  clip-path:polygon(0 0,50% 55%,100% 0);
+}
+.paper{
+  position:absolute;
+  width:90%;
+  height:90%;
+  background:white;
+  top:100%;
+  left:5%;
+  border-radius:10px;
+  transition:.8s;
+}
+.envelope.open .paper{
+  top:5%;
 }
 
 /* Images */
-.images {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+.photos{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  margin-top:20px;
 }
-
-.images img {
-  width: 180px;
-  border-radius: 15px;
+.photos img{
+  width:170px;
+  border-radius:15px;
+  transform:rotate(-3deg);
+  box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+.photos img:nth-child(2){
+  transform:rotate(4deg);
 }
 
 /* Quiz */
-.option {
-  display: block;
-  margin: 12px auto;
-  padding: 12px;
-  background: #fff;
-  width: 260px;
-  border-radius: 20px;
-  cursor: pointer;
+.option{
+  background:white;
+  padding:14px;
+  border-radius:20px;
+  margin:12px auto;
+  width:260px;
+  cursor:pointer;
+  transition:.3s;
 }
+.option:hover{background:#ffe3ec}
 
-/* NO button */
-#noBtn {
-  position: absolute;
+/* No button */
+#no{
+  position:absolute;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
-<section id="page1" class="active">
-  <h1>Dear Zeba, the love of my life 💖</h1>
-  <p>
-    As it is Valentine’s month, I’ve prepared a small surprise for you.
-    You deserve much more than this 🧸💕
-  </p>
-  <button onclick="goToPage(2)">Click to Start 💌</button>
+<section id="p1" class="active">
+  <div class="box">
+    <h1>Dear Zeba 💖</h1>
+    <p>
+      The love of my life…  
+      Since it’s Valentine’s month, I prepared a little surprise for you.  
+      You deserve so much more than this — but this comes straight from my heart 🧸💕
+    </p>
+    <button onclick="go(2)">Click to Start 💌</button>
+  </div>
 </section>
 
-<!-- PAGE 2 -->
-<section id="page2">
-  <h1>Open the Envelope 💝</h1>
+<section id="p2">
+  <h1>Open Me 💝</h1>
+  <div class="envelope" onclick="openEnv(this)">
+    <div class="paper"></div>
+  </div>
+</section>
 
-  <div class="envelope" onclick="openEnvelope()"></div>
-  <p>(Click the envelope 💌)</p>
-
-  <div id="letter" style="display:none;">
+<section id="p3">
+  <div class="box">
     <p>
-      As on Valentine’s Day, I want to say to you that I love you so much—more than words can ever fully explain.
-      You are my safe place, my happiness, and the most beautiful part of my everyday life.
-      Loving you feels natural and easy, like my heart knew you before I did.
-      Your smile lifts me on my hardest days, your presence brings me peace,
-      and your love makes me a better person.
-      I’m grateful for every moment we share.
-      Today and always, I choose you, now and forever 💖
+      As on Valentine’s Day, I want to say that I love you so much—  
+      more than words can ever fully explain.  
+      You are my safe place, my happiness, my calm, my chaos, my everything.  
+      Loving you feels effortless, like my heart always knew you were meant for it.  
+      I choose you today, tomorrow, and forever 💖
     </p>
 
-    <div class="images">
+    <div class="photos">
       <img src="img1.jpg">
       <img src="img2.jpg">
     </div>
 
-    <button onclick="goToPage(3)">Next 💕</button>
+    <button onclick="go(4)">Next 💕</button>
   </div>
 </section>
 
-<!-- PAGE 3 -->
-<section id="page3">
+<section id="p4">
   <h1>Let’s play our love quiz 💘</h1>
   <button onclick="startQuiz()">Play 🎮</button>
 </section>
 
-<!-- PAGE 4 -->
-<section id="page4">
-  <h1 id="question"></h1>
-  <div id="options"></div>
+<section id="p5">
+  <h1 id="q"></h1>
+  <div id="opts"></div>
 </section>
 
-<!-- PAGE 5 -->
-<section id="page5">
+<section id="p6">
   <h1>Zeba, will you be my Valentine? 💍💖</h1>
-
-  <div class="images">
+  <div class="photos">
     <img src="img3.jpg">
     <img src="img4.jpg">
   </div>
-
-  <button onclick="finalYes()">YES 💕</button>
-  <button id="noBtn">NO 😜</button>
+  <button onclick="go(7)">YES 💕</button>
+  <button id="no">NO 😜</button>
 </section>
 
-<!-- PAGE 6 -->
-<section id="page6">
-  <h1>Congratulations 💖</h1>
-  <p>
-    You made the best decision ever 💕  
-    I LOVE YOU SO MUCH JAAAN 💘💘💘
-  </p>
+<section id="p7">
+  <div class="box">
+    <h1>Congratulations 💖</h1>
+    <p>
+      You just made the best decision of your life 😘  
+      I LOVE YOU SO MUCH JAAAN 💕💖💞
+    </p>
+  </div>
 </section>
 
 <script>
-function goToPage(n) {
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById("page" + n).classList.add("active");
+function go(n){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
 }
 
-function openEnvelope() {
-  document.getElementById("letter").style.display = "block";
+function openEnv(e){
+  e.classList.add('open');
+  setTimeout(()=>go(3),900);
 }
 
-const quiz = [
-  { q: "When we went on our first date?", o: ["7th June", "4th June"], a: 0 },
-  { q: "When we met for the first time?", o: ["Theatre", "Girgaon Chowpatty"], a: 0 },
-  { q: "When you get angry what do you do?", o: ["Ignore", "Block & attitude 😅"], a: 1 },
-  { q: "How much do we love each other?", o: ["A lot", "Infinite ♾️💕"], a: 1 }
+const quiz=[
+ {q:"When we went on our first date?",o:["7th June","4th June"],a:0},
+ {q:"When we met for the first time?",o:["Roxy Cinema","Girgaon Chowpatty"],a:0},
+ {q:"When you get angry what do you do?",o:["Ignore","Block & attitude 😅"],a:1},
+ {q:"How much do we love each other?",o:["A lot","Infinite ♾️💕"],a:1}
 ];
+let i=0;
 
-let qi = 0;
-
-function startQuiz() {
-  goToPage(4);
-  loadQ();
+function startQuiz(){go(5);loadQ()}
+function loadQ(){
+ q.innerText=quiz[i].q;
+ opts.innerHTML='';
+ quiz[i].o.forEach((t,x)=>{
+  let d=document.createElement('div');
+  d.className='option';
+  d.innerText=t;
+  d.onclick=()=>{ if(x===quiz[i].a){ i++; i<quiz.length?loadQ():go(6); }};
+  opts.appendChild(d);
+ });
 }
 
-function loadQ() {
-  document.getElementById("question").innerText = quiz[qi].q;
-  const opt = document.getElementById("options");
-  opt.innerHTML = "";
-  quiz[qi].o.forEach((t, i) => {
-    const d = document.createElement("div");
-    d.className = "option";
-    d.innerText = t;
-    d.onclick = () => {
-      if (i === quiz[qi].a) {
-        qi++;
-        qi < quiz.length ? loadQ() : goToPage(5);
-      }
-    };
-    opt.appendChild(d);
-  });
-}
-
-const noBtn = document.getElementById("noBtn");
-noBtn.onmouseover = () => {
-  noBtn.style.left = Math.random() * 70 + "%";
-  noBtn.style.top = Math.random() * 70 + "%";
+const no=document.getElementById('no');
+no.onmouseover=()=>{
+ no.style.left=Math.random()*70+'%';
+ no.style.top=Math.random()*70+'%';
 };
 
-function finalYes() {
-  goToPage(6);
-}
-
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "💖";
-  h.style.left = Math.random() * 100 + "vw";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 6000);
-}, 400);
+setInterval(()=>{
+ let h=document.createElement('div');
+ h.className='heart';
+ h.innerText=Math.random()>.5?'💖':'🧸';
+ h.style.left=Math.random()*100+'vw';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},350);
 </script>
 
 </body>
