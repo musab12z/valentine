@@ -25,7 +25,6 @@ section{
   padding:30px;
   animation:fadeIn 1.2s ease;
 }
-
 .active{display:flex}
 
 @keyframes fadeIn{
@@ -42,7 +41,7 @@ h1{
 .box{
   background:rgba(255,255,255,0.35);
   backdrop-filter:blur(12px);
-  padding:35px;
+  padding:40px;
   border-radius:30px;
   max-width:850px;
   box-shadow:0 25px 50px rgba(0,0,0,.18);
@@ -64,7 +63,7 @@ button:hover{transform:scale(1.08)}
 .heart{
   position:fixed;
   bottom:-20px;
-  font-size:26px;
+  font-size:28px;
   animation:float 7s linear infinite;
 }
 @keyframes float{
@@ -99,20 +98,14 @@ button:hover{transform:scale(1.08)}
   left:4%;
   border-radius:16px;
   transition:.9s;
-  padding:26px;
+  padding:28px;
   overflow-y:auto;
   font-size:18px;
   line-height:1.8;
 }
-.envelope.open .paper{
-  top:4%;
-}
+.envelope.open .paper{ top:4%; }
 
-/* No button */
-#no{
-  position:relative;
-  margin-left:15px;
-}
+#no{ position:relative; margin-left:15px; }
 </style>
 </head>
 
@@ -123,8 +116,7 @@ button:hover{transform:scale(1.08)}
     <h1>Dear Zeba 💖</h1>
     <p>
       The love of my life…  
-      This little world is made only for you.  
-      Every word, every animation, every heartbeat here belongs to us 🌹
+      This little surprise is just a reflection of how special you are to me 🌹
     </p>
     <button onclick="go(2)">Start 💌</button>
   </div>
@@ -132,7 +124,6 @@ button:hover{transform:scale(1.08)}
 
 <section id="p2">
   <h1>Click the Envelope 💝</h1>
-
   <div class="envelope" onclick="openEnv(this)">
     <div class="paper">
       As on Valentine’s Day, I want to say to you that I love you so much—more than words can ever fully explain.
@@ -146,7 +137,6 @@ button:hover{transform:scale(1.08)}
       and I promise to love you with my whole heart, now and forever 💖
     </div>
   </div>
-
   <button id="nextAfterLetter" style="display:none;" onclick="go(3)">Next 💕</button>
 </section>
 
@@ -168,15 +158,36 @@ button:hover{transform:scale(1.08)}
   <button id="no">NO 😜</button>
 </section>
 
+<!-- FINAL DRAMATIC PAGE -->
 <section id="p6">
-  <div class="box" style="position:relative;">
-    <div style="font-size:120px;position:absolute;left:20px;top:20px;opacity:.15;font-family:'Pacifico';">M</div>
-    <div style="font-size:120px;position:absolute;right:20px;bottom:20px;opacity:.15;font-family:'Pacifico';">Z</div>
+  <div class="box" style="position:relative;overflow:hidden;">
+    
+    <div style="
+      position:absolute;
+      left:20px;
+      top:10px;
+      font-size:140px;
+      font-family:'Pacifico';
+      color:#ff4d6d;
+      opacity:.18;">M</div>
 
-    <h1>Forever Begins Here 💖</h1>
-    <p>
-      Two hearts. One soul. One lifetime.  
-      I love you endlessly, my jaan 🌹
+    <div style="
+      position:absolute;
+      right:20px;
+      bottom:10px;
+      font-size:140px;
+      font-family:'Pacifico';
+      color:#ff4d6d;
+      opacity:.18;">Z</div>
+
+    <h1>💖 You Made a Very Good Decision 💖</h1>
+
+    <p style="font-size:20px;line-height:1.8;">
+      From this moment onward, my heart belongs to you even more than before.  
+      Choosing love, choosing *us*, choosing *forever* — that’s what you just did 🌹  
+      <br><br>
+      I LOVE YOU SO MUCH, MY JAAN 💕  
+      Happy Valentine’s Day to the most beautiful soul in my life 💐
     </p>
   </div>
 </section>
@@ -189,7 +200,7 @@ function go(n){
 
 function openEnv(e){
   e.classList.add('open');
-  document.getElementById("nextAfterLetter").style.display = "inline-block";
+  document.getElementById("nextAfterLetter").style.display="inline-block";
 }
 
 const quiz=[
