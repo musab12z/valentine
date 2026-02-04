@@ -43,12 +43,12 @@ h1{
   backdrop-filter:blur(12px);
   padding:40px;
   border-radius:30px;
-  max-width:850px;
+  max-width:900px;
   box-shadow:0 25px 50px rgba(0,0,0,.18);
 }
 
 button{
-  margin-top:25px;
+  margin:15px;
   padding:14px 36px;
   border:none;
   border-radius:30px;
@@ -70,15 +70,15 @@ button:hover{transform:scale(1.08)}
   to{transform:translateY(-120vh);opacity:0}
 }
 
-/* Envelope */
+/* ENVELOPE FIX */
 .envelope{
-  width:260px;
-  height:170px;
+  width:420px;
+  height:260px;
   background:white;
   position:relative;
-  border-radius:16px;
+  border-radius:20px;
   cursor:pointer;
-  box-shadow:0 12px 25px rgba(0,0,0,.25);
+  box-shadow:0 15px 30px rgba(0,0,0,.25);
   overflow:hidden;
 }
 .envelope:before{
@@ -89,6 +89,7 @@ button:hover{transform:scale(1.08)}
   background:#ffd1dc;
   clip-path:polygon(0 0,50% 55%,100% 0);
 }
+
 .paper{
   position:absolute;
   width:92%;
@@ -96,16 +97,45 @@ button:hover{transform:scale(1.08)}
   background:white;
   top:100%;
   left:4%;
-  border-radius:16px;
+  border-radius:18px;
   transition:.9s;
-  padding:28px;
-  overflow-y:auto;
+  padding:30px;
   font-size:18px;
   line-height:1.8;
+  overflow:hidden;
 }
-.envelope.open .paper{ top:4%; }
+.envelope.open .paper{
+  top:4%;
+}
 
-#no{ position:relative; margin-left:15px; }
+/* QUIZ OPTIONS FIX */
+.option{
+  background:rgba(255,255,255,0.5);
+  border:2px solid #ff4d6d;
+  border-radius:25px;
+  padding:14px 30px;
+  margin:12px auto;
+  width:fit-content;
+  cursor:pointer;
+  font-size:18px;
+  transition:.3s;
+}
+.option:hover{
+  background:#ff4d6d;
+  color:white;
+  transform:scale(1.05);
+}
+
+/* VALENTINE BUTTON FIX */
+.val-buttons{
+  display:flex;
+  gap:25px;
+  justify-content:center;
+  position:relative;
+}
+#no{
+  position:relative;
+}
 </style>
 </head>
 
@@ -114,10 +144,7 @@ button:hover{transform:scale(1.08)}
 <section id="p1" class="active">
   <div class="box">
     <h1>Dear Zeba 💖</h1>
-    <p>
-      The love of my life…  
-      This little surprise is just a reflection of how special you are to me 🌹
-    </p>
+    <p>The love of my life… this is just for you 🌹</p>
     <button onclick="go(2)">Start 💌</button>
   </div>
 </section>
@@ -154,40 +181,22 @@ button:hover{transform:scale(1.08)}
 
 <section id="p5">
   <h1>Zeba, will you be my Valentine? 💍</h1>
-  <button onclick="go(6)">YES 💖</button>
-  <button id="no">NO 😜</button>
+  <div class="val-buttons">
+    <button onclick="go(6)">YES 💖</button>
+    <button id="no">NO 😜</button>
+  </div>
 </section>
 
-<!-- FINAL DRAMATIC PAGE -->
 <section id="p6">
-  <div class="box" style="position:relative;overflow:hidden;">
-    
-    <div style="
-      position:absolute;
-      left:20px;
-      top:10px;
-      font-size:140px;
-      font-family:'Pacifico';
-      color:#ff4d6d;
-      opacity:.18;">M</div>
-
-    <div style="
-      position:absolute;
-      right:20px;
-      bottom:10px;
-      font-size:140px;
-      font-family:'Pacifico';
-      color:#ff4d6d;
-      opacity:.18;">Z</div>
+  <div class="box" style="position:relative;">
+    <div style="position:absolute;left:20px;top:10px;font-size:140px;font-family:'Pacifico';opacity:.18;">M</div>
+    <div style="position:absolute;right:20px;bottom:10px;font-size:140px;font-family:'Pacifico';opacity:.18;">Z</div>
 
     <h1>💖 You Made a Very Good Decision 💖</h1>
-
-    <p style="font-size:20px;line-height:1.8;">
-      From this moment onward, my heart belongs to you even more than before.  
-      Choosing love, choosing *us*, choosing *forever* — that’s what you just did 🌹  
+    <p style="font-size:20px;">
+      Choosing love. Choosing us. Choosing forever 🌹  
       <br><br>
-      I LOVE YOU SO MUCH, MY JAAN 💕  
-      Happy Valentine’s Day to the most beautiful soul in my life 💐
+      I LOVE YOU SO MUCH MY JAAN 💕
     </p>
   </div>
 </section>
@@ -227,8 +236,8 @@ function loadQ(){
 const no=document.getElementById('no');
 no.onmouseover=()=>{
  no.style.position='absolute';
- no.style.left=Math.random()*70+'%';
- no.style.top=Math.random()*70+'%';
+ no.style.left=Math.random()*60+'%';
+ no.style.top=Math.random()*60+'%';
 };
 
 setInterval(()=>{
