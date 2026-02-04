@@ -44,7 +44,7 @@ h1{
   backdrop-filter:blur(12px);
   padding:35px;
   border-radius:30px;
-  max-width:750px;
+  max-width:850px;
   box-shadow:0 25px 50px rgba(0,0,0,.18);
 }
 
@@ -73,11 +73,11 @@ button:hover{transform:scale(1.08)}
 
 /* Envelope */
 .envelope{
-  width:240px;
-  height:160px;
+  width:260px;
+  height:170px;
   background:white;
   position:relative;
-  border-radius:14px;
+  border-radius:16px;
   cursor:pointer;
   box-shadow:0 12px 25px rgba(0,0,0,.25);
   overflow:hidden;
@@ -97,44 +97,16 @@ button:hover{transform:scale(1.08)}
   background:white;
   top:100%;
   left:4%;
-  border-radius:14px;
+  border-radius:16px;
   transition:.9s;
-  padding:18px;
+  padding:26px;
   overflow-y:auto;
+  font-size:18px;
+  line-height:1.8;
 }
 .envelope.open .paper{
   top:4%;
 }
-
-/* Photos */
-.photos{
-  display:flex;
-  gap:25px;
-  justify-content:center;
-  margin-top:25px;
-  flex-wrap:wrap;
-}
-.photos img{
-  width:170px;
-  border-radius:16px;
-  transform:rotate(-4deg);
-  box-shadow:0 12px 22px rgba(0,0,0,.22);
-}
-.photos img:nth-child(2){
-  transform:rotate(4deg);
-}
-
-/* Quiz */
-.option{
-  background:white;
-  padding:15px;
-  border-radius:22px;
-  margin:12px auto;
-  width:270px;
-  cursor:pointer;
-  transition:.3s;
-}
-.option:hover{background:#ffe3ec}
 
 /* No button */
 #no{
@@ -160,52 +132,43 @@ button:hover{transform:scale(1.08)}
 
 <section id="p2">
   <h1>Click the Envelope 💝</h1>
+
   <div class="envelope" onclick="openEnv(this)">
     <div class="paper">
-      <p style="font-size:15px;line-height:1.7;">
-        As on Valentine’s Day, I want to say to you that I love you so much—more than words can ever fully explain.
-        You are my safe place, my happiness, and the most beautiful part of my everyday life.
-        Loving you feels natural and easy, like my heart knew you before I did.
-        Your smile lifts me on my hardest days, your presence brings me peace,
-        and your love makes me a better person.
-        I’m grateful for every moment we share, every laugh, every late-night talk,
-        and every quiet second just being us.
-        Today and always, I choose you, I appreciate you,
-        and I promise to love you with my whole heart, now and forever 💖
-      </p>
+      As on Valentine’s Day, I want to say to you that I love you so much—more than words can ever fully explain.
+      You are my safe place, my happiness, and the most beautiful part of my everyday life.
+      Loving you feels natural and easy, like my heart knew you before I did.
+      Your smile lifts me on my hardest days, your presence brings me peace,
+      and your love makes me a better person.
+      I’m grateful for every moment we share, every laugh, every late-night talk,
+      and every quiet second just being us.
+      Today and always, I choose you, I appreciate you,
+      and I promise to love you with my whole heart, now and forever 💖
     </div>
   </div>
+
+  <button id="nextAfterLetter" style="display:none;" onclick="go(3)">Next 💕</button>
 </section>
 
 <section id="p3">
   <div class="box">
-    <button onclick="go(4)">Next 💕</button>
+    <h1>Our Love Quiz 💘</h1>
+    <button onclick="startQuiz()">Play 🎮</button>
   </div>
 </section>
 
 <section id="p4">
-  <h1>Our Love Quiz 💘</h1>
-  <button onclick="startQuiz()">Play 🎮</button>
-</section>
-
-<section id="p5">
   <h1 id="q"></h1>
   <div id="opts"></div>
 </section>
 
-<section id="p6">
+<section id="p5">
   <h1>Zeba, will you be my Valentine? 💍</h1>
-  <div class="photos">
-    <img src="img3.jpg">
-    <img src="img4.jpg">
-  </div>
-  <div>
-    <button onclick="go(7)">YES 💖</button>
-    <button id="no">NO 😜</button>
-  </div>
+  <button onclick="go(6)">YES 💖</button>
+  <button id="no">NO 😜</button>
 </section>
 
-<section id="p7">
+<section id="p6">
   <div class="box" style="position:relative;">
     <div style="font-size:120px;position:absolute;left:20px;top:20px;opacity:.15;font-family:'Pacifico';">M</div>
     <div style="font-size:120px;position:absolute;right:20px;bottom:20px;opacity:.15;font-family:'Pacifico';">Z</div>
@@ -226,18 +189,18 @@ function go(n){
 
 function openEnv(e){
   e.classList.add('open');
-  setTimeout(()=>go(3),1400);
+  document.getElementById("nextAfterLetter").style.display = "inline-block";
 }
 
 const quiz=[
  {q:"When we went on our first date?",o:["7th June","4th June"],a:0},
  {q:"When we met for the first time?",o:["Roxy Cinema","Girgaon Chowpatty"],a:0},
- {q:"When you get angry what do you do?",o:["Ignore","Block & attitude 😅"],a:1},
+ {q:"When you get angry what do you do?",o:["Ignore","Block & pitai 😅"],a:1},
  {q:"How much do we love each other?",o:["A lot","Infinite ♾️💖"],a:1}
 ];
 let i=0;
 
-function startQuiz(){go(5);loadQ()}
+function startQuiz(){go(4);loadQ()}
 function loadQ(){
  q.innerText=quiz[i].q;
  opts.innerHTML='';
@@ -245,7 +208,7 @@ function loadQ(){
   let d=document.createElement('div');
   d.className='option';
   d.innerText=t;
-  d.onclick=()=>{ if(x===quiz[i].a){ i++; i<quiz.length?loadQ():go(6); }};
+  d.onclick=()=>{ if(x===quiz[i].a){ i++; i<quiz.length?loadQ():go(5); }};
   opts.appendChild(d);
  });
 }
@@ -260,11 +223,11 @@ no.onmouseover=()=>{
 setInterval(()=>{
  let h=document.createElement('div');
  h.className='heart';
- h.innerText=Math.random()>.8?'🧸':(Math.random()>.5?'🌹':'💖');
+ h.innerText=Math.random()>.7?'🌹':'💖';
  h.style.left=Math.random()*100+'vw';
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),7000);
-},320);
+},300);
 </script>
 
 </body>
