@@ -13,6 +13,7 @@ body{
   margin:0;
   font-family:'Quicksand',sans-serif;
   background:linear-gradient(135deg,#ffb6c1,#ffd1dc);
+  overflow-x:hidden;
 }
 
 section{
@@ -45,7 +46,7 @@ button{
 /* ENVELOPE */
 .envelope{
   width:620px;
-  height:360px;
+  height:380px;
   background:#fff;
   border-radius:22px;
   position:relative;
@@ -69,9 +70,9 @@ button{
   top:100%;
   background:#fff;
   border-radius:18px;
-  padding:18px 22px;
-  font-size:14.5px;
-  line-height:1.55;
+  padding:20px 24px;
+  font-size:15px;
+  line-height:1.6;
   transition:0.9s ease;
 }
 .envelope.open .paper{ top:12%; }
@@ -83,8 +84,8 @@ button{
   border-radius:12px;
   position:absolute;
 }
-.img-left{ top:12px; left:12px; }
-.img-right{ top:12px; right:12px; }
+.img-left{ top:14px; left:14px; }
+.img-right{ top:14px; right:14px; }
 
 /* QUIZ */
 .quiz-box{
@@ -102,12 +103,54 @@ button{
   font-weight:600;
 }
 
-/* VALENTINE */
+/* VALENTINE FINAL */
 .val-buttons{
   display:flex;
-  gap:30px;
+  gap:40px;
+  position:relative;
 }
-#no{position:relative}
+
+#no{
+  position:relative;
+}
+
+/* FINAL LOVE PAGE */
+.love-bg{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  z-index:-1;
+}
+
+.float{
+  position:absolute;
+  font-size:26px;
+  animation:floatUp 8s linear infinite;
+  opacity:.8;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(100vh);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(-10vh);opacity:0}
+}
+
+.final-card{
+  background:rgba(255,255,255,.75);
+  border-radius:30px;
+  padding:40px;
+  max-width:520px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
+}
+
+.initials{
+  display:flex;
+  justify-content:space-between;
+  font-family:'Pacifico',cursive;
+  font-size:64px;
+  color:#ff2e63;
+  margin-bottom:10px;
+}
 </style>
 </head>
 
@@ -130,7 +173,7 @@ button{
       <img src="img1.jpg" class="img-left">
       <img src="img2.jpg" class="img-right">
 
-      <div style="margin-top:80px;">
+      <div style="margin-top:90px;">
         As on Valentine’s Day, I want to say to you that I love you so much more than words can ever fully explain.
         You are my safe place, my happiness, and the most beautiful part of my everyday life.
         Loving you feels natural, like my heart knew you before I did.
@@ -150,7 +193,7 @@ button{
 
 <!-- PAGE 3 -->
 <section id="p3">
-  <h1>Ready for a Small Quiz? 💘</h1>
+  <h1>Let’s Play Our Love Quiz 💘</h1>
   <button onclick="startQuiz()">Start the Quiz 💞</button>
   <div class="quiz-box" id="quizBox" style="display:none;margin-top:20px;"></div>
 </section>
@@ -166,11 +209,24 @@ button{
 
 <!-- PAGE 5 -->
 <section id="p5">
-  <h1>💖 You Made the Best Decision 💖</h1>
-  <p>
-    I don’t know where life takes us, but I will never stop loving you.
-    I loved you then, I love you now, and I will love you forever 🌹
-  </p>
+  <div class="love-bg" id="hearts"></div>
+
+  <div class="final-card">
+    <div class="initials">
+      <span>M</span>
+      <span>Z</span>
+    </div>
+
+    <h1>💖 You Made the Best Decision 💖</h1>
+
+    <p style="font-size:17px;line-height:1.7;">
+      I don’t know where life takes us, but I will never stop loving you.
+      I loved you then, I love you now,
+      and I will love you forever 🌹💖
+    </p>
+
+    <h2>I LOVE YOU SO MUCH, JAAN 💞</h2>
+  </div>
 </section>
 
 <script>
@@ -217,6 +273,20 @@ no.onmouseover=()=>{
  no.style.left=Math.random()*60+'%';
  no.style.top=Math.random()*60+'%';
 };
+
+/* FLOATING HEARTS & ROSES */
+const hearts=document.getElementById("hearts");
+const emojis=["💖","🌹","💕","💘","🌸"];
+
+for(let i=0;i<40;i++){
+  const s=document.createElement("span");
+  s.className="float";
+  s.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*8+"s";
+  s.style.fontSize=20+Math.random()*18+"px";
+  hearts.appendChild(s);
+}
 </script>
 
 </body>
