@@ -22,139 +22,100 @@ section{
   align-items:center;
   flex-direction:column;
   text-align:center;
-  padding:30px;
-  animation:fadeIn 1s ease;
+  padding:20px;
 }
 .active{display:flex}
-
-@keyframes fadeIn{
-  from{opacity:0;transform:scale(.95)}
-  to{opacity:1;transform:scale(1)}
-}
 
 h1{
   font-family:'Pacifico',cursive;
   color:#ff2e63;
 }
 
-.box{
-  background:rgba(255,255,255,0.4);
-  backdrop-filter:blur(12px);
-  padding:40px;
-  border-radius:30px;
-  max-width:900px;
-  box-shadow:0 20px 50px rgba(0,0,0,.2);
-}
-
 button{
-  margin:15px;
-  padding:14px 36px;
+  margin-top:25px;
+  padding:14px 40px;
   border:none;
   border-radius:30px;
   background:#ff4d6d;
   color:white;
   font-size:18px;
   cursor:pointer;
-  transition:.3s;
-}
-button:hover{transform:scale(1.08)}
-
-.heart{
-  position:fixed;
-  bottom:-30px;
-  font-size:26px;
-  animation:float 7s linear infinite;
-}
-@keyframes float{
-  to{transform:translateY(-120vh);opacity:0}
 }
 
-/* ENVELOPE – FINAL FIX */
+/* ENVELOPE — HARD FIX */
 .envelope{
-  width:680px;
-  height:420px;
+  width:780px;
+  height:520px;
   background:#fff;
-  border-radius:28px;
+  border-radius:30px;
   position:relative;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  box-shadow:0 25px 50px rgba(0,0,0,.3);
   cursor:pointer;
   overflow:hidden;
 }
 .envelope::before{
   content:'';
   position:absolute;
-  width:100%;
-  height:100%;
+  inset:0;
   background:#ffd1dc;
-  clip-path:polygon(0 0,50% 62%,100% 0);
+  clip-path:polygon(0 0,50% 65%,100% 0);
 }
 
 .paper{
   position:absolute;
-  width:94%;
-  height:94%;
-  left:3%;
+  width:92%;
+  height:88%;
+  left:4%;
   top:120%;
   background:#fff;
   border-radius:24px;
-  padding:36px 44px;
-  font-size:19px;
-  line-height:2;
+  padding:32px 38px;
+  font-size:16.5px;
+  line-height:1.85;
   transition:1s ease;
-  overflow:hidden;
 }
 .envelope.open .paper{
-  top:3%;
+  top:6%;
 }
 
-/* QUIZ OPTIONS */
-.option{
-  background:rgba(255,255,255,0.55);
-  border:2px solid #ff4d6d;
-  padding:16px 42px;
-  border-radius:30px;
-  margin:12px auto;
-  font-size:18px;
-  cursor:pointer;
-  width:fit-content;
-  transition:.3s;
-}
-.option:hover{
-  background:#ff4d6d;
-  color:#fff;
-  transform:scale(1.05);
-}
-
-/* Valentine Buttons */
 .val-buttons{
   display:flex;
-  gap:25px;
+  gap:30px;
 }
 #no{position:relative;}
+
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:24px;
+  animation:float 7s linear infinite;
+}
+@keyframes float{
+  to{transform:translateY(-120vh);opacity:0}
+}
 </style>
 </head>
 
 <body>
 
 <section id="p1" class="active">
-  <div class="box">
-    <h1>Dear Zeba 💖</h1>
-    <p>The love of my life… this surprise is just for you 🌹</p>
-    <button onclick="go(2)">Start 💌</button>
-  </div>
+  <h1>Dear Zeba 💖</h1>
+  <p>The love of my life… this surprise is just for you 🌹</p>
+  <button onclick="go(2)">Start 💌</button>
 </section>
 
 <section id="p2">
   <h1>Click the Envelope 💝</h1>
   <div class="envelope" onclick="openEnv(this)">
     <div class="paper">
-      As on Valentine’s Day, I want to say to you that I love you so much more than words
+      As on Valentine’s Day, I want to say to you that I love you so much—more than words can ever fully explain.
       You are my safe place, my happiness, and the most beautiful part of my everyday life.
       Loving you feels natural and easy, like my heart knew you before I did.
       Your smile lifts me on my hardest days, your presence brings me peace,
       and your love makes me a better person.
       I’m grateful for every moment we share, every laugh, every late-night talk,
-      and every quiet second just being us. Today and always, I appreciate you,
+      and every quiet second just being us.
+      Today and always, I choose you, I appreciate you,
       and I promise to love you with my whole heart, now and forever 💖
     </div>
   </div>
@@ -162,32 +123,20 @@ button:hover{transform:scale(1.08)}
 </section>
 
 <section id="p3">
-  <div class="box">
-    <h1>Our Love Quiz 💘</h1>
-    <button onclick="startQuiz()">Play 🎮</button>
-  </div>
-</section>
-
-<section id="p4">
-  <h1 id="q"></h1>
-  <div id="opts"></div>
-</section>
-
-<section id="p5">
   <h1>Zeba, will you be my Valentine? 💍</h1>
   <div class="val-buttons">
-    <button onclick="go(6)">YES 💖</button>
+    <button onclick="go(4)">YES 💖</button>
     <button id="no">NO 😜</button>
   </div>
 </section>
 
-<section id="p6">
-  <div class="box" style="position:relative;">
-    <div style="position:absolute;left:20px;top:10px;font-size:150px;font-family:'Pacifico';opacity:.18;">M</div>
-    <div style="position:absolute;right:20px;bottom:10px;font-size:150px;font-family:'Pacifico';opacity:.18;">Z</div>
+<section id="p4">
+  <div style="position:relative;background:rgba(255,255,255,0.4);padding:50px;border-radius:30px;">
+    <div style="position:absolute;left:20px;top:10px;font-size:160px;font-family:'Pacifico';opacity:.15;">M</div>
+    <div style="position:absolute;right:20px;bottom:10px;font-size:160px;font-family:'Pacifico';opacity:.15;">Z</div>
 
     <h1>💖 You Made a Very Good Decision 💖</h1>
-    <p style="font-size:20px;line-height:1.9;">
+    <p style="font-size:19px;line-height:1.9;">
       I don’t know where life takes us, but I will never stop loving you.  
       I loved you then, I love you now, and I will love you forever 🌹  
       <br><br>
@@ -201,29 +150,7 @@ function go(n){
  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
  document.getElementById('p'+n).classList.add('active');
 }
-
 function openEnv(e){ e.classList.add('open'); }
-
-const quiz=[
- {q:"When we went on our first date?",o:["7th June","4th June"],a:0},
- {q:"When we met for the first time?",o:["Roxy Cinema","Girgaon Chowpatty"],a:0},
- {q:"When you get angry what do you do?",o:["Ignore","Block & pitai 😅"],a:1},
- {q:"How much do we love each other?",o:["A lot","Infinite ♾️💖"],a:1}
-];
-let i=0;
-
-function startQuiz(){go(4);loadQ()}
-function loadQ(){
- q.innerText=quiz[i].q;
- opts.innerHTML='';
- quiz[i].o.forEach((t,x)=>{
-  let d=document.createElement('div');
-  d.className='option';
-  d.innerText=t;
-  d.onclick=()=>{ if(x===quiz[i].a){ i++; i<quiz.length?loadQ():go(5); }};
-  opts.appendChild(d);
- });
-}
 
 const no=document.getElementById('no');
 no.onmouseover=()=>{
@@ -239,7 +166,7 @@ setInterval(()=>{
  h.style.left=Math.random()*100+'vw';
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),7000);
-},300);
+},350);
 </script>
 
 </body>
