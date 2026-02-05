@@ -24,6 +24,7 @@ section{
   flex-direction:column;
   text-align:center;
   padding:20px;
+  position:relative;
 }
 .active{display:flex}
 
@@ -103,15 +104,18 @@ button{
   font-weight:600;
 }
 
-/* VALENTINE FINAL */
+/* VALENTINE BUTTONS */
 .val-buttons{
   display:flex;
   gap:40px;
   position:relative;
+  margin-top:20px;
 }
 
+/* SMOOTH NO BUTTON */
 #no{
-  position:relative;
+  position:absolute;
+  transition: left 0.35s ease, top 0.35s ease, transform 0.2s ease;
 }
 
 /* FINAL LOVE PAGE */
@@ -266,15 +270,25 @@ function check(i){
  }
 }
 
-/* NO BUTTON MOVE */
-const no=document.getElementById('no');
-no.onmouseover=()=>{
- no.style.position='absolute';
- no.style.left=Math.random()*60+'%';
- no.style.top=Math.random()*60+'%';
-};
+/* SMOOTH NO BUTTON LOGIC */
+const no = document.getElementById('no');
+const page4 = document.getElementById('p4');
 
-/* FLOATING HEARTS & ROSES */
+function moveNoButton(){
+  const maxX = page4.clientWidth - no.offsetWidth;
+  const maxY = page4.clientHeight - no.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  no.style.left = x + 'px';
+  no.style.top = y + 'px';
+}
+
+no.addEventListener('mouseenter', moveNoButton);
+no.addEventListener('mousedown', moveNoButton);
+
+/* FLOATING HEARTS */
 const hearts=document.getElementById("hearts");
 const emojis=["💖","🌹","💕","💘","🌸"];
 
