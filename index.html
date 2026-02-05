@@ -18,33 +18,32 @@ body{
 section{
   display:none;
   min-height:100vh;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   flex-direction:column;
   text-align:center;
   padding:30px;
-  animation:fadeIn 1.2s ease;
+  animation:fadeIn 1s ease;
 }
 .active{display:flex}
 
 @keyframes fadeIn{
-  from{opacity:0;transform:scale(.96)}
+  from{opacity:0;transform:scale(.95)}
   to{opacity:1;transform:scale(1)}
 }
 
 h1{
   font-family:'Pacifico',cursive;
   color:#ff2e63;
-  margin-bottom:15px;
 }
 
 .box{
-  background:rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.4);
   backdrop-filter:blur(12px);
   padding:40px;
   border-radius:30px;
   max-width:900px;
-  box-shadow:0 25px 50px rgba(0,0,0,.18);
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
 
 button{
@@ -62,76 +61,74 @@ button:hover{transform:scale(1.08)}
 
 .heart{
   position:fixed;
-  bottom:-20px;
-  font-size:28px;
+  bottom:-30px;
+  font-size:26px;
   animation:float 7s linear infinite;
 }
 @keyframes float{
   to{transform:translateY(-120vh);opacity:0}
 }
 
-/* ENVELOPE FIX */
+/* ENVELOPE — PROPER FIX */
 .envelope{
-  width:420px;
-  height:260px;
-  background:white;
+  width:600px;
+  height:360px;
+  background:#fff;
+  border-radius:25px;
   position:relative;
-  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
   cursor:pointer;
-  box-shadow:0 15px 30px rgba(0,0,0,.25);
   overflow:hidden;
 }
-.envelope:before{
+.envelope::before{
   content:'';
   position:absolute;
   width:100%;
   height:100%;
   background:#ffd1dc;
-  clip-path:polygon(0 0,50% 55%,100% 0);
+  clip-path:polygon(0 0,50% 60%,100% 0);
 }
 
 .paper{
   position:absolute;
-  width:92%;
-  height:92%;
-  background:white;
-  top:100%;
-  left:4%;
-  border-radius:18px;
-  transition:.9s;
-  padding:30px;
-  font-size:18px;
-  line-height:1.8;
+  width:94%;
+  height:94%;
+  left:3%;
+  top:110%;
+  background:#fff;
+  border-radius:22px;
+  padding:30px 40px;
+  font-size:19px;
+  line-height:1.9;
+  transition:1s ease;
   overflow:hidden;
 }
 .envelope.open .paper{
-  top:4%;
+  top:3%;
 }
 
-/* QUIZ OPTIONS FIX */
+/* QUIZ OPTIONS — PROPER BOX */
 .option{
-  background:rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.55);
   border:2px solid #ff4d6d;
-  border-radius:25px;
-  padding:14px 30px;
+  padding:16px 40px;
+  border-radius:30px;
   margin:12px auto;
-  width:fit-content;
-  cursor:pointer;
   font-size:18px;
+  cursor:pointer;
+  width:fit-content;
   transition:.3s;
 }
 .option:hover{
   background:#ff4d6d;
-  color:white;
+  color:#fff;
   transform:scale(1.05);
 }
 
-/* VALENTINE BUTTON FIX */
+/* Valentine Buttons */
 .val-buttons{
   display:flex;
   gap:25px;
-  justify-content:center;
-  position:relative;
 }
 #no{
   position:relative;
@@ -144,7 +141,7 @@ button:hover{transform:scale(1.08)}
 <section id="p1" class="active">
   <div class="box">
     <h1>Dear Zeba 💖</h1>
-    <p>The love of my life… this is just for you 🌹</p>
+    <p>The love of my life… this surprise is just for you 🌹</p>
     <button onclick="go(2)">Start 💌</button>
   </div>
 </section>
@@ -164,7 +161,7 @@ button:hover{transform:scale(1.08)}
       and I promise to love you with my whole heart, now and forever 💖
     </div>
   </div>
-  <button id="nextAfterLetter" style="display:none;" onclick="go(3)">Next 💕</button>
+  <button onclick="go(3)">Next 💕</button>
 </section>
 
 <section id="p3">
@@ -191,26 +188,18 @@ button:hover{transform:scale(1.08)}
   <div class="box" style="position:relative;">
     <div style="position:absolute;left:20px;top:10px;font-size:140px;font-family:'Pacifico';opacity:.18;">M</div>
     <div style="position:absolute;right:20px;bottom:10px;font-size:140px;font-family:'Pacifico';opacity:.18;">Z</div>
-
     <h1>💖 You Made a Very Good Decision 💖</h1>
-    <p style="font-size:20px;">
-      Choosing love. Choosing us. Choosing forever 🌹  
-      <br><br>
-      I LOVE YOU SO MUCH MY JAAN 💕
-    </p>
+    <p style="font-size:20px;">I LOVE YOU SO MUCH MY JAAN 🌹</p>
   </div>
 </section>
 
 <script>
 function go(n){
-  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
-  document.getElementById('p'+n).classList.add('active');
+ document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
 }
 
-function openEnv(e){
-  e.classList.add('open');
-  document.getElementById("nextAfterLetter").style.display="inline-block";
-}
+function openEnv(e){ e.classList.add('open'); }
 
 const quiz=[
  {q:"When we went on our first date?",o:["7th June","4th June"],a:0},
