@@ -113,7 +113,8 @@ button{
 /* ONLY CHANGE HERE */
 #no{
   position:relative;
-  transition: transform 0.35s ease;
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
 
 /* FINAL LOVE PAGE */
@@ -237,7 +238,7 @@ function go(n){
  document.getElementById('p'+n).classList.add('active');
 }
 
-/* QUIZ */
+/* QUIZ — UNCHANGED */
 const quizData=[
  {q:"When we went on our first date?",o:["7th June","4th June"],a:0},
  {q:"When we met for the first time?",o:["Roxy Cinema","Girgaon Chowpatty"],a:0},
@@ -268,19 +269,27 @@ function check(i){
  }
 }
 
-/* FIXED NO BUTTON – aligned but escapes */
+/* FIXED NO BUTTON — floats inside frame */
 const no = document.getElementById('no');
+const frame = document.getElementById('p4');
 
-function escapeNo(){
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 120 - 60;
+function moveNo(){
+  const frameRect = frame.getBoundingClientRect();
+  const btnRect = no.getBoundingClientRect();
+
+  const maxX = frameRect.width/2 - btnRect.width;
+  const maxY = frameRect.height/4;
+
+  const x = Math.random() * maxX * 2 - maxX;
+  const y = Math.random() * maxY * 2 - maxY;
+
   no.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-no.addEventListener('mouseenter', escapeNo);
-no.addEventListener('mousedown', escapeNo);
+no.addEventListener('mouseenter', moveNo);
+no.addEventListener('mousedown', moveNo);
 
-/* FLOATING HEARTS & ROSES */
+/* FLOATING HEARTS */
 const hearts=document.getElementById("hearts");
 const emojis=["💖","🌹","💕","💘","🌸"];
 
