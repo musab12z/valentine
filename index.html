@@ -42,25 +42,23 @@ button{
   cursor:pointer;
 }
 
-/* ================= ENVELOPE (FINAL FIX) ================= */
+/* ENVELOPE */
 .envelope{
   width:620px;
-  height:380px;
+  height:360px;
   background:#fff;
-  border-radius:24px;
+  border-radius:22px;
   position:relative;
   box-shadow:0 18px 35px rgba(0,0,0,.25);
   cursor:pointer;
   overflow:hidden;
-  margin-bottom:15px;
 }
-
 .envelope::before{
   content:'';
   position:absolute;
   inset:0;
   background:#ffd1dc;
-  clip-path:polygon(0 0,50% 58%,100% 0);
+  clip-path:polygon(0 0,50% 55%,100% 0);
 }
 
 .paper{
@@ -76,22 +74,17 @@ button{
   line-height:1.55;
   transition:0.9s ease;
 }
+.envelope.open .paper{ top:12%; }
 
-.envelope.open .paper{
-  top:12%;
+.paper img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:12px;
+  position:absolute;
 }
-
-/* IMAGE ROW (SMALL IMAGES) */
-.image-row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:10px;
-}
-.image-row img{
-  width:30%;
-  border-radius:10px;
-}
+.img-left{ top:12px; left:12px; }
+.img-right{ top:12px; right:12px; }
 
 /* QUIZ */
 .quiz-box{
@@ -110,19 +103,11 @@ button{
 }
 
 /* VALENTINE */
-.val-buttons{display:flex;gap:30px}
+.val-buttons{
+  display:flex;
+  gap:30px;
+}
 #no{position:relative}
-
-/* HEARTS */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:22px;
-  animation:float 7s linear infinite;
-}
-@keyframes float{
-  to{transform:translateY(-120vh);opacity:0}
-}
 </style>
 </head>
 
@@ -142,31 +127,32 @@ button{
   <div class="envelope" onclick="this.classList.add('open')">
     <div class="paper">
 
-      <div class="image-row">
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-      </div>
+      <img src="img1.jpg" class="img-left">
+      <img src="img2.jpg" class="img-right">
 
-      As on Valentine’s Day, I want to say to you that I love you so much more than words can ever fully explain.
-      You are my safe place, my happiness, and the most beautiful part of my everyday life.
-      Loving you feels natural, like my heart knew you before I did.
-      Your smile lifts me on my hardest days, your presence brings me peace,
-      and your love makes me a better person.
-      I’m grateful for every moment we share, every laugh, every late-night talk,
-      and every quiet second just being us.
-      I choose you, I appreciate you,
-      and I promise to love you with my whole heart now and forever 💖
+      <div style="margin-top:80px;">
+        As on Valentine’s Day, I want to say to you that I love you so much more than words can ever fully explain.
+        You are my safe place, my happiness, and the most beautiful part of my everyday life.
+        Loving you feels natural, like my heart knew you before I did.
+        Your smile lifts me on my hardest days, your presence brings me peace,
+        and your love makes me a better person.
+        I’m grateful for every moment we share, every laugh, every late-night talk,
+        and every quiet second just being us.
+        I choose you, I appreciate you,
+        and I promise to love you with my whole heart now and forever 💖
+      </div>
 
     </div>
   </div>
 
-  <button onclick="go(3);loadQuiz()">Proceed 💕</button>
+  <button onclick="go(3)">Proceed 💕</button>
 </section>
 
-<!-- PAGE 3 QUIZ -->
+<!-- PAGE 3 -->
 <section id="p3">
-  <h1>Let’s Play Our Love Quiz 💘</h1>
-  <div class="quiz-box" id="quizBox"></div>
+  <h1>Ready for a Small Quiz? 💘</h1>
+  <button onclick="startQuiz()">Start the Quiz 💞</button>
+  <div class="quiz-box" id="quizBox" style="display:none;margin-top:20px;"></div>
 </section>
 
 <!-- PAGE 4 -->
@@ -180,17 +166,11 @@ button{
 
 <!-- PAGE 5 -->
 <section id="p5">
-  <div style="position:relative;background:rgba(255,255,255,.5);padding:40px;border-radius:30px;">
-    <div style="position:absolute;left:10px;top:10px;font-size:140px;font-family:'Pacifico';opacity:.15;">M</div>
-    <div style="position:absolute;right:10px;bottom:10px;font-size:140px;font-family:'Pacifico';opacity:.15;">Z</div>
-
-    <h1>💖 You Made the Best Decision 💖</h1>
-    <p style="font-size:18px;line-height:1.8;">
-      I don’t know where life takes us, but I will never stop loving you.<br>
-      I loved you then, I love you now, and I will love you forever 🌹<br><br>
-      I LOVE YOU SO MUCH, MY JAAN 💕
-    </p>
-  </div>
+  <h1>💖 You Made the Best Decision 💖</h1>
+  <p>
+    I don’t know where life takes us, but I will never stop loving you.
+    I loved you then, I love you now, and I will love you forever 🌹
+  </p>
 </section>
 
 <script>
@@ -208,6 +188,11 @@ const quizData=[
 ];
 let qi=0;
 
+function startQuiz(){
+ document.getElementById('quizBox').style.display='block';
+ loadQuiz();
+}
+
 function loadQuiz(){
  const q=quizData[qi];
  let html=`<h3>${q.q}</h3>`;
@@ -216,6 +201,7 @@ function loadQuiz(){
  });
  document.getElementById('quizBox').innerHTML=html;
 }
+
 function check(i){
  if(i===quizData[qi].a){
    qi++;
@@ -224,23 +210,13 @@ function check(i){
  }
 }
 
-/* NO BUTTON */
+/* NO BUTTON MOVE */
 const no=document.getElementById('no');
 no.onmouseover=()=>{
  no.style.position='absolute';
  no.style.left=Math.random()*60+'%';
  no.style.top=Math.random()*60+'%';
 };
-
-/* HEARTS */
-setInterval(()=>{
- let h=document.createElement('div');
- h.className='heart';
- h.innerText=Math.random()>.7?'🌹':'💖';
- h.style.left=Math.random()*100+'vw';
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),7000);
-},450);
 </script>
 
 </body>
