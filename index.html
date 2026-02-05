@@ -8,14 +8,12 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family:'Quicksand',sans-serif;
   background:linear-gradient(135deg,#ffb6c1,#ffd1dc);
   overflow:hidden;
 }
-
 section{
   display:none;
   min-height:100vh;
@@ -27,25 +25,22 @@ section{
 }
 .active{display:flex}
 
-h1{
-  font-family:'Pacifico',cursive;
-  color:#ff2e63;
-}
+h1{font-family:'Pacifico',cursive;color:#ff2e63}
 
 button{
-  margin-top:20px;
+  margin-top:18px;
   padding:14px 36px;
   border:none;
   border-radius:30px;
   background:#ff4d6d;
   color:white;
-  font-size:18px;
+  font-size:17px;
   cursor:pointer;
 }
 
-/* ---------- ENVELOPE (FINAL BALANCED SIZE) ---------- */
+/* ENVELOPE */
 .envelope{
-  width:680px;
+  width:650px;
   height:420px;
   background:#fff;
   border-radius:26px;
@@ -53,9 +48,8 @@ button{
   box-shadow:0 20px 40px rgba(0,0,0,.25);
   cursor:pointer;
   overflow:hidden;
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
-
 .envelope::before{
   content:'';
   position:absolute;
@@ -63,42 +57,49 @@ button{
   background:#ffd1dc;
   clip-path:polygon(0 0,50% 60%,100% 0);
 }
-
 .paper{
   position:absolute;
   width:90%;
-  height:80%;
+  height:78%;
   left:5%;
   top:100%;
   background:#fff;
   border-radius:20px;
-  padding:26px 30px;
+  padding:24px 28px;
   font-size:15.5px;
-  line-height:1.7;
+  line-height:1.65;
   transition:1s ease;
 }
+.envelope.open .paper{ top:10%; }
 
-.envelope.open .paper{
-  top:10%;
+/* QUIZ */
+.quiz-box{
+  background:rgba(255,255,255,.45);
+  padding:30px;
+  border-radius:25px;
+  width:420px;
+}
+.option{
+  background:#fff;
+  padding:12px;
+  border-radius:18px;
+  margin:10px 0;
+  cursor:pointer;
+  font-weight:600;
 }
 
-/* Valentine buttons */
-.val-buttons{
-  display:flex;
-  gap:30px;
-}
+/* VALENTINE */
+.val-buttons{display:flex;gap:30px}
 #no{position:relative}
 
-/* floating hearts */
+/* HEARTS */
 .heart{
   position:fixed;
   bottom:-20px;
   font-size:22px;
   animation:float 7s linear infinite;
 }
-@keyframes float{
-  to{transform:translateY(-120vh);opacity:0}
-}
+@keyframes float{to{transform:translateY(-120vh);opacity:0}}
 </style>
 </head>
 
@@ -113,9 +114,8 @@ button{
 
 <!-- PAGE 2 -->
 <section id="p2">
-  <h1>Open This Envelope 💝</h1>
-
-  <div class="envelope" onclick="openEnv(this)">
+  <h1>Open the Envelope 💝</h1>
+  <div class="envelope" onclick="this.classList.add('open')">
     <div class="paper">
       As on Valentine’s Day, I want to say to you that I love you so much more than words can ever fully explain.
       You are my safe place, my happiness, and the most beautiful part of my everyday life.
@@ -128,26 +128,31 @@ button{
       and I promise to love you with my whole heart now and forever 💖
     </div>
   </div>
-
   <button onclick="go(3)">Proceed 💕</button>
 </section>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 QUIZ -->
 <section id="p3">
-  <h1>Zeba, will you be my Valentine? 💍</h1>
-  <div class="val-buttons">
-    <button onclick="go(4)">YES 💖</button>
-    <button id="no">NO 😜</button>
-  </div>
+  <h1>Let’s Play Our Love Quiz 💘</h1>
+  <div class="quiz-box" id="quiz"></div>
 </section>
 
 <!-- PAGE 4 -->
 <section id="p4">
-  <div style="position:relative;background:rgba(255,255,255,0.45);padding:40px;border-radius:28px;">
-    <div style="position:absolute;left:15px;top:10px;font-size:150px;font-family:'Pacifico';opacity:.15;">M</div>
-    <div style="position:absolute;right:15px;bottom:10px;font-size:150px;font-family:'Pacifico';opacity:.15;">Z</div>
+  <h1>Zeba, will you be my Valentine? 💍</h1>
+  <div class="val-buttons">
+    <button onclick="go(5)">YES 💖</button>
+    <button id="no">NO 😜</button>
+  </div>
+</section>
 
-    <h1>💖 You Made a Beautiful Decision 💖</h1>
+<!-- PAGE 5 -->
+<section id="p5">
+  <div style="position:relative;background:rgba(255,255,255,.45);padding:40px;border-radius:30px;">
+    <div style="position:absolute;left:10px;top:10px;font-size:150px;font-family:'Pacifico';opacity:.15;">M</div>
+    <div style="position:absolute;right:10px;bottom:10px;font-size:150px;font-family:'Pacifico';opacity:.15;">Z</div>
+
+    <h1>💖 You Made the Best Decision 💖</h1>
     <p style="font-size:18px;line-height:1.8;">
       I don’t know where life takes us, but I will never stop loving you.  
       I loved you then, I love you now, and I will love you forever 🌹  
@@ -162,8 +167,34 @@ function go(n){
  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
  document.getElementById('p'+n).classList.add('active');
 }
-function openEnv(e){ e.classList.add('open'); }
 
+/* QUIZ DATA */
+const quizData=[
+ {q:"When we went on our first date?",o:["7th June","4th June"],a:0},
+ {q:"When we met for the first time?",o:["Roxy Cinema","Girgaon Chowpatty"],a:0},
+ {q:"When you get angry what do you do?",o:["Ignore","Block & pitai 😅"],a:1},
+ {q:"How much do we love each other?",o:["A lot","Infinite ♾️💕"],a:1}
+];
+let qi=0;
+
+function loadQuiz(){
+ const q=quizData[qi];
+ let html=`<h3>${q.q}</h3>`;
+ q.o.forEach((opt,i)=>{
+  html+=`<div class="option" onclick="check(${i})">${opt}</div>`;
+ });
+ document.getElementById('quiz').innerHTML=html;
+}
+function check(i){
+ if(i===quizData[qi].a){
+   qi++;
+   if(qi<quizData.length) loadQuiz();
+   else go(4);
+ }
+}
+loadQuiz();
+
+/* NO button run */
 const no=document.getElementById('no');
 no.onmouseover=()=>{
  no.style.position='absolute';
@@ -171,6 +202,7 @@ no.onmouseover=()=>{
  no.style.top=Math.random()*60+'%';
 };
 
+/* hearts */
 setInterval(()=>{
  let h=document.createElement('div');
  h.className='heart';
@@ -178,7 +210,7 @@ setInterval(()=>{
  h.style.left=Math.random()*100+'vw';
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),7000);
-},400);
+},450);
 </script>
 
 </body>
