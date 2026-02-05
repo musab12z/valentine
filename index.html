@@ -65,9 +65,9 @@ button{
   top:100%;
   background:#fff;
   border-radius:20px;
-  padding:24px 28px;
-  font-size:15.5px;
-  line-height:1.65;
+  padding:22px 26px;
+  font-size:15px;
+  line-height:1.6;
   transition:1s ease;
 }
 .envelope.open .paper{ top:10%; }
@@ -115,8 +115,17 @@ button{
 <!-- PAGE 2 -->
 <section id="p2">
   <h1>Open the Envelope 💝</h1>
+
   <div class="envelope" onclick="this.classList.add('open')">
     <div class="paper">
+
+      <!-- IMAGES -->
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:12px;">
+        <img src="img1.jpg" style="width:48%;border-radius:12px;">
+        <img src="img2.jpg" style="width:48%;border-radius:12px;">
+      </div>
+
+      <!-- TEXT -->
       As on Valentine’s Day, I want to say to you that I love you so much more than words can ever fully explain.
       You are my safe place, my happiness, and the most beautiful part of my everyday life.
       Loving you feels natural, like my heart knew you before I did.
@@ -126,8 +135,10 @@ button{
       and every quiet second just being us.
       I choose you, I appreciate you,
       and I promise to love you with my whole heart now and forever 💖
+
     </div>
   </div>
+
   <button onclick="go(3)">Proceed 💕</button>
 </section>
 
@@ -168,7 +179,7 @@ function go(n){
  document.getElementById('p'+n).classList.add('active');
 }
 
-/* QUIZ DATA */
+/* QUIZ */
 const quizData=[
  {q:"When we went on our first date?",o:["7th June","4th June"],a:0},
  {q:"When we met for the first time?",o:["Roxy Cinema","Girgaon Chowpatty"],a:0},
@@ -194,7 +205,7 @@ function check(i){
 }
 loadQuiz();
 
-/* NO button run */
+/* NO BUTTON */
 const no=document.getElementById('no');
 no.onmouseover=()=>{
  no.style.position='absolute';
@@ -202,7 +213,7 @@ no.onmouseover=()=>{
  no.style.top=Math.random()*60+'%';
 };
 
-/* hearts */
+/* HEARTS */
 setInterval(()=>{
  let h=document.createElement('div');
  h.className='heart';
